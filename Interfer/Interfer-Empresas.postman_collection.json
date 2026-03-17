@@ -1,0 +1,284 @@
+{
+  "info": {
+    "_postman_id": "interfer-empresas-collection",
+    "name": "Interfer Empresas Service",
+    "description": "Coleccion de endpoints para PMA Interfer (empresas)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth Helper",
+      "description": "Usa Auth Service para obtener token de admin y guardarlo en auth_token",
+      "item": [
+        {
+          "name": "Login Admin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const jsonData = pm.response.json();",
+                  "  if (jsonData.token) {",
+                  "    pm.collectionVariables.set('auth_token', jsonData.token);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailOrUsername\": \"admin@interfer.com\",\n  \"password\": \"Admin123!\"\n}"
+            },
+            "url": {
+              "raw": "{{auth_base_url}}/auth/login",
+              "host": [
+                "{{auth_base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Obtiene JWT desde el Auth Service."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "System",
+      "item": [
+        {
+          "name": "Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/Health",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "Health"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Empresas",
+      "item": [
+        {
+          "name": "Crear Empresa",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"TechNova S.A.\",\n  \"nivelImpacto\": \"Alto\",\n  \"a\u00f1osTrayectoria\": 12,\n  \"categoriaEmpresarial\": \"Tecnologia\",\n  \"email\": \"contacto@technova.com\",\n  \"telefono\": \"5555-1234\",\n  \"sitioWeb\": \"https://technova.com\",\n  \"descripcion\": \"Empresa de soluciones tecnologicas para industria.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/empresas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "empresas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Empresas",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/empresas?orden=A-Z&filtroCategoria=Tecnologia&filtroA\u00f1os=12&estado=Activo",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "empresas"
+              ],
+              "query": [
+                {
+                  "key": "orden",
+                  "value": "A-Z"
+                },
+                {
+                  "key": "filtroCategoria",
+                  "value": "Tecnologia"
+                },
+                {
+                  "key": "filtroA\u00f1os",
+                  "value": "12"
+                },
+                {
+                  "key": "estado",
+                  "value": "Activo"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Empresa Por ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/empresas/{{empresa_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "empresas",
+                "{{empresa_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Empresa",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nivelImpacto\": \"Medio\",\n  \"estado\": \"Activo\",\n  \"descripcion\": \"Actualizacion de informacion de la empresa.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/empresas/{{empresa_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "empresas",
+                "{{empresa_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generar Reporte Excel",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/empresas/reporte/excel",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "empresas",
+                "reporte",
+                "excel"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3006/Interfer/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "auth_base_url",
+      "value": "http://localhost:3005/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "auth_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "empresa_id",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

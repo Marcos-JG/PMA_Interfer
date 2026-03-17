@@ -62,9 +62,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{base_url}}/auth/register",
+							"raw": "{{baseDos_url}}/auth/register",
 							"host": [
-								"{{base_url}}"
+								"{{baseDos_url}}"
 							],
 							"path": [
 								"auth",
@@ -106,9 +106,9 @@
 							"raw": "{\n    \"emailOrUsername\": \"juan.perez@example.com\",\n    \"password\": \"Password123!\"\n}"
 						},
 						"url": {
-							"raw": "{{base_url}}/auth/login",
+							"raw": "{{baseDos_url}}/auth/login",
 							"host": [
-								"{{base_url}}"
+								"{{baseDos_url}}"
 							],
 							"path": [
 								"auth",
@@ -134,9 +134,9 @@
 							"raw": "{\n    \"token\": \"your-verification-token-here\"\n}"
 						},
 						"url": {
-							"raw": "{{base_url}}/auth/verify-email",
+							"raw": "{{baseDos_url}}/auth/verify-email",
 							"host": [
-								"{{base_url}}"
+								"{{baseDos_url}}"
 							],
 							"path": [
 								"auth",
@@ -162,9 +162,9 @@
 							"raw": "{\n    \"email\": \"juan.perez@example.com\"\n}"
 						},
 						"url": {
-							"raw": "{{base_url}}/auth/resend-verification",
+							"raw": "{{baseDos_url}}/auth/resend-verification",
 							"host": [
-								"{{base_url}}"
+								"{{baseDos_url}}"
 							],
 							"path": [
 								"auth",
@@ -190,9 +190,9 @@
 							"raw": "{\n    \"email\": \"juan.perez@example.com\"\n}"
 						},
 						"url": {
-							"raw": "{{base_url}}/auth/forgot-password",
+							"raw": "{{baseDos_url}}/auth/forgot-password",
 							"host": [
-								"{{base_url}}"
+								"{{baseDos_url}}"
 							],
 							"path": [
 								"auth",
@@ -218,9 +218,9 @@
 							"raw": "{\n    \"token\": \"your-reset-token-here\",\n    \"newPassword\": \"NewPassword123!\"\n}"
 						},
 						"url": {
-							"raw": "{{base_url}}/auth/reset-password",
+							"raw": "{{baseDos_url}}/auth/reset-password",
 							"host": [
-								"{{base_url}}"
+								"{{baseDos_url}}"
 							],
 							"path": [
 								"auth",
@@ -253,9 +253,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/auth/profile",
+							"raw": "{{baseDos_url}}/auth/profile",
 							"host": [
-								"{{base_url}}"
+								"{{baseDos_url}}"
 							],
 							"path": [
 								"auth",
@@ -281,9 +281,9 @@
 							"raw": "{\n    \"userId\": \"user-id-here\"\n}"
 						},
 						"url": {
-							"raw": "{{base_url}}/auth/profile/by-id",
+							"raw": "{{baseDos_url}}/auth/profile/by-id",
 							"host": [
-								"{{base_url}}"
+								"{{baseDos_url}}"
 							],
 							"path": [
 								"auth",
@@ -326,9 +326,9 @@
 							"raw": "{\n    \"roleName\": \"ADMIN_ROLE\"\n}"
 						},
 						"url": {
-							"raw": "{{base_url}}/users/:userId/role",
+							"raw": "{{baseDos_url}}/users/:userId/role",
 							"host": [
-								"{{base_url}}"
+								"{{baseDos_url}}"
 							],
 							"path": [
 								"users",
@@ -363,9 +363,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/users/:userId/roles",
+							"raw": "{{baseDos_url}}/users/:userId/roles",
 							"host": [
-								"{{base_url}}"
+								"{{baseDos_url}}"
 							],
 							"path": [
 								"users",
@@ -400,9 +400,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/users/by-role/:roleName",
+							"raw": "{{baseDos_url}}/users/by-role/:roleName",
 							"host": [
-								"{{base_url}}"
+								"{{baseDos_url}}"
 							],
 							"path": [
 								"users",
@@ -430,9 +430,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/health",
+					"raw": "{{baseDos_url}}/health",
 					"host": [
-						"{{base_url}}"
+						"{{baseDos_url}}"
 					],
 					"path": [
 						"health"
@@ -465,7 +465,7 @@
 	],
 	"variable": [
 		{
-			"key": "base_url",
+			"key": "baseDos_url",
 			"value": "http://localhost:3005/api/v1",
 			"type": "string"
 		},

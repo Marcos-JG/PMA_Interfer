@@ -6,7 +6,7 @@ services:
     container_name: interfer_db
     restart: unless-stopped
     environment:
-      POSTGRES_DB: InterferDB
+      POSTGRES_DB: interfer_db
       POSTGRES_USER: root
       POSTGRES_PASSWORD: admin
     ports:

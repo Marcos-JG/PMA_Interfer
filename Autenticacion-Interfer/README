@@ -24,7 +24,7 @@ SMTP_ENABLE_SSL=false
 SMTP_USERNAME=kinalsports@gmail.com
 SMTP_PASSWORD=yrsd prvf kwat toee
 EMAIL_FROM=kinalsports@gmail.com
-EMAIL_FROM_NAME=GestorDeOpiniones
+EMAIL_FROM_NAME=Interfer Auth Service
 
 # Cloudinary (upload de perfiles)
 CLOUDINARY_CLOUD_NAME=djuxr89ny

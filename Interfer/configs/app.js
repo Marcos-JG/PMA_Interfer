@@ -6,6 +6,7 @@ import morgan from 'morgan';
 import { dbConnection } from './db.js';
 import { corsOptions } from './cors-configuration.js';
 import { helmetConfiguration } from './helmet-configuration.js';
+import empresaRoutes from '../src/empresas/empresa.routes.js';
 
 const BASE_PATH = '/Interfer/api/v1';
 
@@ -18,15 +19,18 @@ const middlewares = (app) => {
 }
 
 const routes = (app) => {
-
     app.get(`${BASE_PATH}/Health`, (request, response) => {
         response.status(200).json({
             status: 'Healthy',
             timestamp: new Date().toISOString(),
             service: 'Interfer Admin Server',
         });
+    });
 
-    })
+    // Rutas de empresas
+    app.use(`${BASE_PATH}/empresas`, empresaRoutes);
+
+    // Ruta 404
     app.use((req, res) => {
         res.status(404).json({
             success: false,
