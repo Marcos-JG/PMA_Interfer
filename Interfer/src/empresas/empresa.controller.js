@@ -143,7 +143,7 @@ export const actualizarEmpresa = async (req, res) => {
     }
 
     const { id } = req.params;
-    const camposActualizables = ['nombre', 'nivelImpacto', 'años Trayectoria', 'categoriaEmpresarial', 'email', 'telefono', 'sitioWeb', 'descripcion', 'estado'];
+    const camposActualizables = ['nombre', 'nivelImpacto', 'añosTrayectoria', 'categoriaEmpresarial', 'email', 'telefono', 'sitioWeb', 'descripcion', 'estado'];
     
     const actualizaciones = {};
     for (const campo of camposActualizables) {

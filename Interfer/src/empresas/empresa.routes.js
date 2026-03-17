@@ -8,16 +8,15 @@ import {
 } from './empresa.controller.js';
 import { validarCrearEmpresa, validarActualizarEmpresa } from '../../middlewares/empresa.validation.js';
 import { validateJWT } from '../../middlewares/validate-JWT.js';
+import { requireAdmin } from '../../middlewares/require-admin.js';
 
 const router = express.Router();
 
-// Rutas públicas
-router.get('/reporte/excel', validateJWT, generarReporteExcel);
-router.get('/:id', validateJWT, obtenerEmpresaPorId);
-router.get('/', validateJWT, obtenerEmpresas);
-
-// Rutas protegidas (solo para admins)
-router.post('/', validateJWT, validarCrearEmpresa, crearEmpresa);
-router.put('/:id', validateJWT, validarActualizarEmpresa, actualizarEmpresa);
+// Rutas protegidas (solo para administradores)
+router.get('/reporte/excel', validateJWT, requireAdmin, generarReporteExcel);
+router.get('/:id', validateJWT, requireAdmin, obtenerEmpresaPorId);
+router.get('/', validateJWT, requireAdmin, obtenerEmpresas);
+router.post('/', validateJWT, requireAdmin, validarCrearEmpresa, crearEmpresa);
+router.put('/:id', validateJWT, requireAdmin, validarActualizarEmpresa, actualizarEmpresa);
 
 export default router;
