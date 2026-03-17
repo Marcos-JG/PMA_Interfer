@@ -14,6 +14,8 @@ CLOUDINARY_FOLDER=interfer/images
 
 # ⚠️ IMPORTANTE
 
-## PARA GENERAR EL EXCEL  
-### AL MOMENTO DE ENVIAR LA PETICIÓN SE DEBE USAR **SEND AND DOWNLOAD**  
-### ❌ NO USAR **SEND**
+## Para generar el Excel
+
+### Al momento de enviar la petición se debe usar **SEND AND DOWNLOAD**
+
+### ❌ No usar **SEND**
